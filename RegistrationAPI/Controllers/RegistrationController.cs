@@ -61,6 +61,7 @@ namespace RegistrationAPI.Controllers
             }
 
             registration.Name = updatedRegistration.Name;
+            registration.FatherName = updatedRegistration.FatherName;
             registration.RollNumber = updatedRegistration.RollNumber;
             registration.Department = updatedRegistration.Department;
             registration.PhoneNumber = updatedRegistration.PhoneNumber;

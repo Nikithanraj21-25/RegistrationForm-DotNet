@@ -5144,11 +5144,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\project-RF\\RegistrationAPI\\RegistrationAPI.csproj",
+      "projectUniqueName": "C:\\projects-ReFo\\RegistrationAPI\\RegistrationAPI.csproj",
       "projectName": "RegistrationAPI",
-      "projectPath": "C:\\project-RF\\RegistrationAPI\\RegistrationAPI.csproj",
+      "projectPath": "C:\\projects-ReFo\\RegistrationAPI\\RegistrationAPI.csproj",
       "packagesPath": "C:\\Users\\senpo\\.nuget\\packages\\",
-      "outputPath": "C:\\project-RF\\RegistrationAPI\\obj\\",
+      "outputPath": "C:\\projects-ReFo\\RegistrationAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

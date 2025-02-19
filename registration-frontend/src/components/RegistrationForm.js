@@ -6,6 +6,7 @@ const API_BASE_URL = "http://localhost:5000/api/registration";
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         name: "",
+        fatherName: "",
         rollNumber: "",
         department: "",
         phoneNumber: "",
@@ -49,7 +50,7 @@ const RegistrationForm = () => {
                 alert("Registration successful!");
             }
 
-            setFormData({ name: "", rollNumber: "", department: "", phoneNumber: "", address: "" });
+            setFormData({ name: "",fatherName: "", rollNumber: "", department: "", phoneNumber: "", address: "" });
             fetchUsers(); // Refresh user list
         } catch (error) {
             console.error("API Error:", error);
@@ -81,6 +82,7 @@ const RegistrationForm = () => {
             <h2>{editingUserId ? "Edit User" : "Registration Form"}</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required /><br />
+                <input type="text" name="fatherName" placeholder="Father's Name" value={formData.fatherName} onChange={handleChange} required /><br />
                 <input type="text" name="rollNumber" placeholder="Roll Number" value={formData.rollNumber} onChange={handleChange} required /><br />
                 <input type="text" name="department" placeholder="Department" value={formData.department} onChange={handleChange} required /><br />
                 <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required /><br />
@@ -92,7 +94,7 @@ const RegistrationForm = () => {
             <ul>
                 {users.map((user) => (
                     <li key={user.id}>
-                        {user.name} - {user.rollNumber} - {user.department} - {user.phoneNumber} - {user.address}
+                        {user.name} - {user.fatherName} - {user.rollNumber} - {user.department} - {user.phoneNumber} - {user.address}
                         <button onClick={() => handleEdit(user)}>Edit</button>
                         <button onClick={() => handleDelete(user.id)}>Delete</button>
                     </li>

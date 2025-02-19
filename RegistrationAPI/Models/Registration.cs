@@ -4,6 +4,7 @@ namespace RegistrationAPI.Models
     {
         public int Id { get; set; }
         public string? Name { get; set; }  // Nullable
+        public string? FatherName { get; set; } 
         public string? RollNumber { get; set; }
         public string? Department { get; set; }
         public string? PhoneNumber { get; set; }
