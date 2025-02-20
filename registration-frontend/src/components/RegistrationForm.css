@@ -134,9 +134,10 @@ tr:nth-child(even) {
 
 /* Button Actions */
 .edit-btn {
-    background-color: #f1c40f;
+    background-color: #007BFF;
     color: white;
     padding: 4px 8px;
+    margin-bottom: 5px;
     font-size: 12px;
     border-radius: 3px;
     cursor: pointer;
