@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import "./RegistrationForm.css"
 
 const API_BASE_URL = "http://localhost:5000/api/registration";
 
@@ -78,30 +79,59 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div>
-            <h2>{editingUserId ? "Edit User" : "Registration Form"}</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required /><br />
-                <input type="text" name="fatherName" placeholder="Father's Name" value={formData.fatherName} onChange={handleChange} required /><br />
-                <input type="text" name="rollNumber" placeholder="Roll Number" value={formData.rollNumber} onChange={handleChange} required /><br />
-                <input type="text" name="department" placeholder="Department" value={formData.department} onChange={handleChange} required /><br />
-                <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required /><br />
-                <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} required></textarea><br />
-                <button type="submit">{editingUserId ? "Update User" : "Register"}</button>
-            </form>
+        <div className="container">
+            <div className="form-card">
+                <h2>{editingUserId ? "Edit User" : "Registration Form"}</h2>
+                <form onSubmit={handleSubmit} className="form">
+                    <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+                    <input type="text" name="fatherName" placeholder="Father's Name" value={formData.fatherName} onChange={handleChange} required />
+                    <input type="text" name="rollNumber" placeholder="Roll Number" value={formData.rollNumber} onChange={handleChange} required />
+                    <input type="text" name="department" placeholder="Department" value={formData.department} onChange={handleChange} required />
+                    <input type="text" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
+                    <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} required></textarea>
+                    <button type="submit">{editingUserId ? "Update User" : "Register"}</button>
+                </form>
+            </div>
 
-            <h2>Registered Users</h2>
-            <ul>
-                {users.map((user) => (
-                    <li key={user.id}>
-                        {user.name} - {user.fatherName} - {user.rollNumber} - {user.department} - {user.phoneNumber} - {user.address}
-                        <button onClick={() => handleEdit(user)}>Edit</button>
-                        <button onClick={() => handleDelete(user.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+            <div className="user-table">
+                <h2>Registered Users</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Father's Name</th>
+                            <th>Roll Number</th>
+                            <th>Department</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.length > 0 ? (
+                            users.map((user) => (
+                                <tr key={user.id}>
+                                    <td>{user.name}</td>
+                                    <td>{user.fatherName}</td>
+                                    <td>{user.rollNumber}</td>
+                                    <td>{user.department}</td>
+                                    <td>{user.phoneNumber}</td>
+                                    <td>{user.address}</td>
+                                    <td>
+                                        <button className="edit-btn" onClick={() => handleEdit(user)}>Edit</button>
+                                        <button className="delete-btn" onClick={() => handleDelete(user.id)}>Delete</button>
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="7" className="no-users">No registered users yet.</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
-
 export default RegistrationForm;

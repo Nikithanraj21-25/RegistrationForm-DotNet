@@ -31,7 +31,7 @@ namespace RegistrationAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Registration>>> GetRegistrations()
         {
-            return await _context.Registrations.ToListAsync();
+            return await _context.Registrations.Where(r => r.Status == 0).ToListAsync();
         }
 
         // DELETE: Delete a user
@@ -44,7 +44,7 @@ namespace RegistrationAPI.Controllers
                 return NotFound();
             }
 
-            _context.Registrations.Remove(registration);
+            registration.Status = 99;  // Mark as deleted
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "User deleted successfully!" });
